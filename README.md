@@ -1,6 +1,9 @@
 # VulnScrapper
 The most **efficient way** to solve the problem of scraping vulnerabilities from multiple OEM websites and ensuring timely alerts involves optimizing both the **scraping architecture** and the **handling of multiple sources**. Below is an efficient architecture, along with technologies and best practices for scalability, reliability, and real-time performance.
 
+### work flow:
+setting up puppeteer or web hooks for dom change --> test that --> web scraping oem --> mailing --> setting up paraller checking ans scraping --> redis.
+
 ### 1. **Architecture Overview**:
 - **Distributed Scraping**: Use a distributed approach to handle multiple websites concurrently, minimizing scraping time and ensuring real-time performance.
 - **Event-Driven Scraping**: Trigger scrapes when a new vulnerability is detected or at regular intervals, rather than scraping all websites simultaneously.
