@@ -1,0 +1,20 @@
+[
+  { "url": "https://msrc.microsoft.com/update-guide/" },
+  {
+    "url": "https://sec.cloudapps.cisco.com/security/center/publicationListing.x"
+  },
+  { "url": "https://support.apple.com/en-us/100100" },
+  { "url": "https://helpx.adobe.com/security.html" },
+  { "url": "IBM Security Bulletins" },
+  { "url": "VMware Security Advisories" },
+  { "url": "Google Chrome Releases" },
+  {
+    "url": "https://www.siemens.com/global/en/products/services/cert/news.html"
+  },
+  {
+    "url": "https://www.se.com/ww/en/work/support/cybersecurity/security-notifications.jsp"
+  },
+  { "url": "Honeywell Cybersecurity" },
+  { "url": "Rockwell Automation Product Notices" },
+  { "url": "Siemens Healthineers Product Security" }
+]
