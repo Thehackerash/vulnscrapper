@@ -1,0 +1,17 @@
+https://helpx.adobe.com/security.html#commerce-buy-now
+https://helpx.adobe.com/security.html#commerce-free-trial
+https://helpx.adobe.com/security/security-bulletin.html
+https://helpx.adobe.com/security/severity-ratings.html
+https://helpx.adobe.com/security/bug-bounty-program.html
+https://helpx.adobe.com/security/security-researcher-hall-of-fame.html
+https://helpx.adobe.com/security/key.html
+https://helpx.adobe.com/security/alertus.html
+https://helpx.adobe.com/security.html
+https://helpx.adobe.com/security/products/media-encoder/apsb24-53.html
+https://helpx.adobe.com/security/products/audition/apsb24-54.html
+https://helpx.adobe.com/security/products/after_effects/apsb24-55.html
+https://helpx.adobe.com/security/products/premiere_pro/apsb24-58.html
+https://helpx.adobe.com/security/products/illustrator/apsb24-66.html
+https://helpx.adobe.com/security/products/acrobat/apsb24-70.html
+https://helpx.adobe.com/security/products/coldfusion/apsb24-71.html
+https://helpx.adobe.com/security/products/photoshop/apsb24-72.html
