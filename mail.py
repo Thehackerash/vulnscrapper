@@ -17,7 +17,7 @@ def load_emails_from_json(file_path):
         print(f"An error occurred while loading emails: {e}")
         return []
 
-def send_ticket_email(emails_path, message):
+def send_email(emails_path, message, batch_size=1):
     if message is None:
         print("No message to send.")
         return
@@ -46,7 +46,6 @@ def send_ticket_email(emails_path, message):
 
     # Set Mailersend details
     mailer.set_mail_from(mail_from, mail_body)
-    mailer.set_mail_to(recipients, mail_body)
     mailer.set_subject("This is a Test Email", mail_body)
     mailer.set_html_content(
         f"<p>{message}</p>", mail_body
@@ -56,9 +55,12 @@ def send_ticket_email(emails_path, message):
     )
     mailer.set_reply_to(reply_to, mail_body)
 
-    # Send the email
-    response = mailer.send(mail_body)
-    
-    print(response)  # For debugging purposes
+    # Batch the recipients to avoid exceeding the limit
+    for i in range(0, len(recipients), batch_size):
+        batch = recipients[i:i + batch_size]
+        mailer.set_mail_to(batch, mail_body)
+        # Send the email
+        response = mailer.send(mail_body)
+        print(response)  # For debugging purposes
 
-send_ticket_email("emails.json", "This is a test email message.")
+send_email("emails.json", "This is a test email message.", batch_size=1)
