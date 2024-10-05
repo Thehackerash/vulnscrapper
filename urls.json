@@ -1,10 +1,16 @@
 [
-  { "url": "https://msrc.microsoft.com/update-guide/vulnerability" },
+  {
+    "url": "https://msrc.microsoft.com/update-guide/vulnerability"
+  },
   {
     "url": "https://sec.cloudapps.cisco.com/security/center/publicationListing.x"
   },
-  { "url": "https://support.apple.com/en-us/100100" },
-  { "url": "https://helpx.adobe.com/security.html" },
+  {
+    "url": "https://support.apple.com/en-us/100100"
+  },
+  {
+    "url": "https://helpx.adobe.com/security.html"
+  },
   {
     "url": "https://www.siemens.com/global/en/products/services/cert/news.html"
   },
