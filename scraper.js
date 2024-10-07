@@ -3,6 +3,9 @@ const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 const fs = require("fs");
 const crypto = require("crypto");
 
+const axios = require("axios");
+const cheerio = require("cheerio");
+
 puppeteer.use(StealthPlugin());
 
 (async () => {
@@ -13,7 +16,7 @@ puppeteer.use(StealthPlugin());
     console.log(`Processing URL: ${url}`);
     const page = await browser.newPage();
     try {
-      await page.goto(url, { waitUntil: "networkidle0" });
+      await page.goto(url, { waitUntil: "networkidle0" }); // 30s timeout
     } catch (err) {
       console.error(`Failed to load page: ${url}`, err);
     }
@@ -31,7 +34,7 @@ puppeteer.use(StealthPlugin());
       });
       return links;
     });
-    console.log("All Hyperlinks:", hyperlinks);
+
     // Remove duplicate links by using a Set
     const uniqueLinks = [...new Set(hyperlinks)];
 
@@ -77,11 +80,7 @@ puppeteer.use(StealthPlugin());
     }
 
     // Save the current hashes to the file for future comparison
-    fs.writeFileSync(
-      hashFilePath,
-      JSON.stringify(linkHashes, null, 2),
-      "utf8",
-    );
+    fs.writeFileSync(hashFilePath, JSON.stringify(linkHashes, null, 2), "utf8");
     console.log(`Hashes saved to ${hashFilePath}`);
 
     await page.close(); // Close the page after processing
@@ -91,3 +90,33 @@ puppeteer.use(StealthPlugin());
     console.error(`Error fetching content: ${error.message}`);
   }
 })();
+
+async function scrapeWebsite(url) {
+  try {
+    const response = await axios.get(url);
+    const $ = cheerio.load(response.data);
+    const bodyText = $("body").text().toLowerCase();
+
+    if (bodyText.includes("cve") || bodyText.includes("Vulnerability")) {
+      const title = $("title").text();
+      const relevantParagraphs = $("p")
+        .filter((i, el) => {
+          const text = $(el).text().toLowerCase();
+          return text.includes("cve") || text.includes("Vulnerability");
+        })
+        .map((i, el) => $(el).text())
+        .get();
+
+      return {
+        title,
+        relevantParagraphs,
+        url,
+      };
+    }
+
+    return null;
+  } catch (error) {
+    console.error(`Error scraping ${url}:`, error);
+    return null;
+  }
+}
