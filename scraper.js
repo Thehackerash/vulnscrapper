@@ -13,7 +13,7 @@ puppeteer.use(StealthPlugin());
     console.log(`Processing URL: ${url}`);
     const page = await browser.newPage();
     try {
-      await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 }); // 30s timeout
+      await page.goto(url, { waitUntil: "networkidle0" });
     } catch (err) {
       console.error(`Failed to load page: ${url}`, err);
     }
@@ -31,7 +31,7 @@ puppeteer.use(StealthPlugin());
       });
       return links;
     });
-
+    console.log("All Hyperlinks:", hyperlinks);
     // Remove duplicate links by using a Set
     const uniqueLinks = [...new Set(hyperlinks)];
 

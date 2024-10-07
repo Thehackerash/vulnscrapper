@@ -14,7 +14,7 @@ def load_urls_from_json(file_path):
         return []
 
 urls = load_urls_from_json("urls.json")
-print(urls)
+# print(urls)
 
 # Function to run the JS scraping script for a given URL
 def run_scraper(url):
