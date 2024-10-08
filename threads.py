@@ -22,7 +22,7 @@ def run_scraper(url):
     try:
         print(f"Starting scraper for {url}")
         # Run the Node.js scraper as a subprocess and pass the URL as an argument
-        subprocess.run(["node", "./scraper.js", url], check=True)
+        subprocess.run(["node", "./changeMonitor.js", url], check=True)
         print(f"Scraping completed for {url}")
     except Exception as e:
         print(f"An error occurred for {url}: {e}")
