@@ -1,6 +1,7 @@
 import pandas as pd
 import subprocess
 from concurrent.futures import ThreadPoolExecutor
+import multiprocessing  # Import to detect number of CPU cores
 
 # Load URLs from a JSON file
 def load_urls_from_json(file_path):
@@ -27,9 +28,10 @@ def run_scraper(url):
     except Exception as e:
         print(f"An error occurred for {url}: {e}")
 
-# Option 1: Multithreading with ThreadPoolExecutor
+# Multithreading with ThreadPoolExecutor
 def run_scrapers_multithreaded():
-    with ThreadPoolExecutor(max_workers=6) as executor:  # Adjust the number of threads
+    num_cores = multiprocessing.cpu_count()  # Detect number of CPU cores
+    with ThreadPoolExecutor(max_workers=num_cores) as executor:  # Adjust the number of threads
         executor.map(run_scraper, urls)
 
 if __name__ == "__main__":
